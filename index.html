@@ -1,23 +1,803 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "이사견적비교 서비스",
+        "provider": {
+            "@type": "Organization",
+            "name": "전국 이사견적 비교 센터",
+            "url": "https://yourdomain.com",
+            "logo": "https://yourdomain.com/logo.png"
+        },
+        "areaServed": {
+            "@type": "State",
+            "name": "대한민국"
+        },
+        "description": "전국 포장이사, 반포장이사, 일반이사 견적을 비교하고, 2026년 최신 이사 비용 정보를 제공합니다. 고객 맞춤형 최저가 견적을 지금 바로 받아보세요.",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "주요 이사 서비스 가격 비교",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Product",
+                        "name": "2.5톤 포장이사 평균 견적"
+                    },
+                    "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "price": "550000",
+                        "priceCurrency": "KRW",
+                        "description": "포장, 운반, 정리 정돈 포함. 평균 시세 기준."
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Product",
+                        "name": "5톤 포장이사 평균 견적"
+                    },
+                    "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "price": "1200000",
+                        "priceCurrency": "KRW",
+                        "description": "3인 가구 표준 짐량 기준. 평균 시세 기준."
+                    }
+                }
+            ]
+        },
+        "url": "https://yourdomain.com"
+    }
+    </script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            background-color: #f7f9fc; /* 부드러운 밝은 배경 */
+            color: #333;
+            font-size: 16px;
+        }
+        
+        header {
+            background-color: #3498db; /* 메인 파란색 */
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -1.5px;
+        }
+        
+        h2 {
+            color: #3498db;
+            font-size: 2.2rem;
+            margin-top: 2.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 4px solid #3498db;
+            display: inline-block;
+            text-align: left;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            border-left: 5px solid #e74c3c; /* 강조 빨간색 */
+            padding-left: 10px;
+            font-weight: 700;
+        }
+
+        h4 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            font-weight: 700;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.7rem 1.4rem;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        section {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        /* 텍스트 가독성 강화 */
+        section p, section ul, section dl, section dd {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* 표 스타일 */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 1.2rem;
+            text-align: center;
+            font-size: 1rem;
+            border: none;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 700;
+            border-bottom: 3px solid #2980b9;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f0f8ff; /* 연한 파랑 */
+        }
+        
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        
+        td {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* 가격 강조 */
+        .price-highlight {
+            font-weight: 700;
+            color: #e74c3c; /* 강조 빨간색 */
+            font-size: 1.3rem;
+        }
+        
+        /* CTA 버튼 */
+        .cta-button {
+            display: block;
+            background-color: #e74c3c;
+            color: white;
+            font-weight: 700;
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 3rem auto 1rem auto;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            max-width: 350px;
+            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
+            font-size: 1.1rem;
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-5px);
+        }
+        
+        /* 키워드 태그 */
+        .keyword-tags {
+            margin: 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            border: 1px solid #ecf0f1;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fefefe;
+        }
+        
+        .keyword-tags a {
+            background-color: #ecf0f1; /* 연한 회색 */
+            color: #3498db;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-weight: 400;
+        }
+        
+        .keyword-tags a:hover {
+            background-color: #bdc3c7;
+            color: white;
+        }
+
+        /* 유용한 정보 링크 */
+        .external-links ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+        .external-links li {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .external-links li:hover {
+            background-color: #dbe4eb;
+        }
+        .external-links a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            padding: 5px 0;
+        }
+        .external-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* 체크리스트 */
+        .check-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            list-style: none;
+            font-size: 1.05rem;
+        }
+        .check-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #27ae60; /* 초록색 체크 */
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* 그래프 및 표 스타일 */
+        .data-visual {
+            margin: 2rem 0;
+            padding: 2rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        /* 입력 폼 스타일 */
+        .contact-form label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: #34495e;
+        }
+        .contact-form input[type="text"], 
+        .contact-form input[type="tel"],
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="tel"]:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        .form-submit-button {
+            background-color: #2ecc71; /* 초록색 제출 버튼 */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        .form-submit-button:hover {
+            background-color: #27ae60;
+        }
+
+        /* 아코디언 FAQ 스타일 */
+        .faq-dl dt {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            color: #34495e;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+        .faq-dl dt:hover {
+            background-color: #dbe4eb;
+        }
+        .faq-dl dt::after {
+            content: '+';
+            position: absolute;
+            right: 15px;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+        .faq-dl dt.active::after {
+            content: '-';
+            transform: rotate(0deg);
+        }
+        .faq-dl dd {
+            background-color: white;
+            padding: 15px 20px;
+            border: 1px solid #ecf0f1;
+            border-top: none;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            margin: 0 0 10px 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+        .faq-dl dt.active + dd {
+            max-height: 500px; /* 충분히 큰 값으로 설정 */
+            padding: 15px 20px;
+        }
+        .faq-dl dd p, .faq-dl dd ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.95rem;
+            color: #777;
+            background-color: #e9ecef;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            margin-top: 3rem;
+        }
+
+        /* 텍스트 강조를 위한 클래스 */
+        .seo-keyword {
+            font-weight: 700;
+            color: #3498db;
+        }
+        .warning-text {
+            color: #e74c3c;
+            font-weight: 700;
+            border: 2px solid #e74c3c;
+            padding: 10px;
+            border-radius: 8px;
+            display: block;
+            margin: 1.5rem 0;
+            background-color: #fef0f0;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+            nav ul { gap: 1rem; }
+            nav a { padding: 0.5rem 1rem; }
+            main { padding: 0 1rem; }
+            section { padding: 1.5rem; }
+            th, td { padding: 0.8rem; font-size: 0.9rem; }
+            .keyword-tags a { font-size: 0.85rem; padding: 6px 12px; }
+            .cta-button { padding: 1rem 2rem; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>전국 <span class="seo-keyword">이사견적비교</span>, 지금 바로 1분 만에 확인하세요!</h1>
+        <p>2026년 최신 이사 비용부터 전문가 팁까지, 투명하고 합리적인 이사 계획을 도와드립니다.</p>
+        <nav aria-label="메인 내비게이션">
+            <ul>
+                <li><a href="#comparison">견적 비교 원리</a></li>
+                <li><a href="#price_factors">이사 비용 요소</a></li>
+                <li><a href="#types_price">형태별 평균 비용</a></li>
+                <li><a href="#regional">지역별 견적 특성</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+                <li><a href="#form_section">무료 견적 요청</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        
+        <section id="form_section">
+            <h2>💰 1분 만에 끝내는 <span class="seo-keyword">이사견적비교</span> 무료 요청</h2>
+            <p>전국 수십 개의 이사업체 견적을 <span class="seo-keyword">한눈에 비교</span>하여 가장 합리적인 <span class="seo-keyword">이사비용</span>을 찾아드립니다. 불필요한 비용을 절감하고, 신뢰할 수 있는 이사업체를 선택하세요.</p>
+            
+            <form class="contact-form" action="https://yourdomain.com/submit_estimate" method="POST">
+                <label for="move_date">희망 이사 날짜 (2026년 기준):</label>
+                <input type="date" id="move_date" name="move_date" value="2026-03-15" required>
+                <p class="warning-text">이사 성수기 (3월, 9월)와 <span class="seo-keyword">손 없는 날</span>은 <span class="seo-keyword">이사견적</span>이 상승합니다. 미리 비교하세요!</p>
+
+                <label for="move_type">이사 형태 선택:</label>
+                <select id="move_type" name="move_type" required>
+                    <option value="">이사 형태를 선택하세요</option>
+                    <option value="packing">포장이사 (가장 편리함)</option>
+                    <option value="semi-packing">반포장이사 (가성비 좋음)</option>
+                    <option value="general">일반이사 (운반만 필요할 때)</option>
+                    <option value="storage">보관이사 (장기간 보관 필요시)</option>
+                </select>
+
+                <label for="current_address">출발지 주소 (시/구):</label>
+                <input type="text" id="current_address" name="current_address" placeholder="예: 서울특별시 강남구" required>
+
+                <label for="arrival_address">도착지 주소 (시/구):</label>
+                <input type="text" id="arrival_address" name="arrival_address" placeholder="예: 부산광역시 해운대구">
+
+                <label for="house_size">주택 평형 및 짐량:</label>
+                <select id="house_size" name="house_size" required>
+                    <option value="">주택 크기/짐량 선택</option>
+                    <option value="oneroom">원룸/오피스텔 (1톤~2.5톤 견적 적합)</option>
+                    <option value="tworoom">투룸/1.5룸 (2.5톤~5톤 견적 적합)</option>
+                    <option value="apartment_20">20평대 아파트/빌라 (5톤 견적 적합)</option>
+                    <option value="apartment_30">30평대 이상 아파트 (5톤 이상 견적 적합)</option>
+                </select>
+
+                <label for="contact_phone">연락처:</label>
+                <input type="tel" id="contact_phone" name="contact_phone" placeholder="예: 010-1234-5678" required>
+
+                <label for="memo">특이사항 (사다리차 필요 여부, 에어컨 설치 등):</label>
+                <textarea id="memo" name="memo" rows="4" placeholder="자세히 적어주시면 정확한 견적 비교가 가능합니다."></textarea>
+
+                <button type="submit" class="form-submit-button" aria-label="무료 이사 견적 비교 신청하기">✅ 견적 비교하고 최저가 확인하기</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section id="comparison">
+            <h2>📊 이사견적비교, 왜 필요하고 어떻게 이루어지나요?</h2>
+            <p>
+                <span class="seo-keyword">이사견적비교</span>는 수많은 이사업체들 사이에서 가장 **합리적인 가격**과 **최상의 서비스**를 제공하는 업체를 찾기 위한 필수 과정입니다. 이사 <span class="seo-keyword">비용</span>은 표준화되어 있지 않고, 업체별 서비스 품질, 인력 구성, 보유 장비(사다리차 등)에 따라 크게 달라지기 때문입니다.
+            </p>
+            
+            <h3>이사견적비교의 핵심 원리: 투명성과 효율성</h3>
+            <p>
+                저희 서비스는 고객님이 요청하신 이사 조건(이사 날짜, 출발/도착지, 짐량)을 바탕으로, **전국 등록된 우수 이사업체**들에게 실시간으로 견적 요청을 전달합니다. 각 업체는 현장 방문 견적 또는 유선 견적을 통해 맞춤형 <span class="seo-keyword">이사비용</span>을 제시하며, 고객님은 이 견적들을 **동시에 비교**할 수 있습니다.
+            </p>
+            <p>
+                일반적인 <span class="seo-keyword">이사견적</span> 과정은 다음과 같습니다:
+                <ul class="check-list">
+                    <li>**1단계. 정보 입력:** 고객님이 이사 날짜, 주소, 짐량을 온라인 폼에 입력합니다.</li>
+                    <li>**2단계. 업체 매칭:** 조건에 맞는 <span class="seo-keyword">전국 이사업체</span> 여러 곳에 요청이 전달됩니다.</li>
+                    <li>**3단계. 무료 방문 견적:** 고객님은 최소 2~3곳의 업체로부터 **무료 현장 방문 견적**을 받습니다. (가장 정확한 견적 산출을 위해 필수입니다.)</li>
+                    <li>**4단계. 견적 비교 및 선택:** 제공된 <span class="seo-keyword">이사견적서</span>(총 비용, 포함 서비스, 보험 여부 명시)를 비교하여 최종 업체를 선택합니다.</li>
+                </ul>
+            </p>
+            
+            <div class="keyword-tags" aria-label="이사견적 관련 주요 키워드">
+                <a href="#comparison">포장이사 견적 비교</a>
+                <a href="#price_factors">이사 비용 절약 팁</a>
+                <a href="#types_price">반포장이사 가격</a>
+                <a href="#regional">용달 이사 견적</a>
+                <a href="#faq">이사 사기 예방</a>
+                <a href="#regional">서울 이사견적</a>
+                <a href="#regional">부산 이사비용</a>
+                <a href="#form_section">2026년 이사 준비</a>
+                <a href="#types_price">5톤 이사 견적</a>
+                <a href="#price_factors">사다리차 비용</a>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="price_factors">
+            <h2>⚙️ <span class="seo-keyword">이사비용</span>을 결정하는 5가지 핵심 요소 (2026년 기준)</h2>
+            <p>
+                <span class="seo-keyword">이사견적비교</span> 시 단순히 총액만 비교해서는 안 됩니다. <span class="seo-keyword">포장이사견적</span>의 변동 요인을 정확히 이해해야 합리적인 계약이 가능합니다. 이사 비용은 다음의 5가지 핵심 요소에 의해 결정되며, 이는 2026년도에도 변함없이 적용될 주요 기준입니다.
+            </p>
+
+            <h3>1. 이사 형태 및 짐량 (가장 큰 비중)</h3>
+            <p>
+                이사 형태(포장/반포장/일반)는 인건비 비중을 결정합니다. **포장이사**는 포장과 정리 인력 비용이 포함되어 가장 비싸고, **일반이사**는 운반 인력만 투입되어 가장 저렴합니다. 짐량은 트럭 톤수(1톤, 2.5톤, 5톤 등)와 인력 투입 규모를 결정하는 핵심 지표입니다.
+            </p>
+            <div class="data-visual">
+                <h4>이사 톤수별 추천 주택 규모 및 비용 추이</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>톤수</th>
+                            <th>추천 주택</th>
+                            <th>평균 작업 인원</th>
+                            <th>대략적인 <span class="seo-keyword">이사비용</span> (포장이사, 평일 기준)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1톤</td>
+                            <td>원룸, 학생 기숙사 (짐 매우 적음)</td>
+                            <td>남성 1인</td>
+                            <td>25만원 ~ 40만원</td>
+                        </tr>
+                        <tr>
+                            <td>2.5톤</td>
+                            <td>1.5룸, 작은 투룸 (짐 적당함)</td>
+                            <td>남성 1인 + 여성 1인</td>
+                            <td>45만원 ~ 70만원</td>
+                        </tr>
+                        <tr>
+                            <td>5톤</td>
+                            <td>20~30평대 아파트/빌라 (표준 3인 가구)</td>
+                            <td>남성 2인 + 여성 1인</td>
+                            <td>80만원 ~ 140만원</td>
+                        </tr>
+                        <tr>
+                            <td>7.5톤 이상</td>
+                            <td>40평대 이상 대형 가구</td>
+                            <td>맞춤 구성</td>
+                            <td>150만원 ~ 300만원 이상</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 0.9em; color: #777; margin-top: 10px;">*상기 비용은 일반적인 평균 시세이며, <span class="seo-keyword">이사견적비교</span>를 통해 정확한 가격을 확인해야 합니다. (VAT 별도)</p>
+            </div>
+
+            <h3>2. 이사 시기 (성수기 vs 비수기)</h3>
+            <p>
+                **이사 성수기 (봄/가을)**와 **손 없는 날**은 이사 수요가 폭증하여 <span class="seo-keyword">이사견적</span>이 30%에서 최대 50%까지 상승할 수 있습니다. 특히 2026년 <span class="seo-keyword">손 없는 날</span> 중 금요일과 주말은 예약이 가장 빨리 마감되고 <span class="seo-keyword">이사비용</span>이 가장 높게 책정되므로, 여유가 있다면 평일 비수기 이사를 추천드립니다.
+            </p>
+
+            <h3>3. 운반 거리 및 환경 (추가 비용 발생 요인)</h3>
+            <p>
+                **운반 거리**가 멀수록 (특히 서울-부산과 같은 장거리 이사 시) 운송비가 추가됩니다. 또한, **작업 환경**이 <span class="seo-keyword">이사비용</span>에 큰 영향을 줍니다.
+                <ul class="check-list">
+                    <li>**사다리차 사용료:** 아파트나 고층 빌라 이사 시 사다리차 사용료가 추가됩니다. (일반적으로 층수와 지역에 따라 15만 원 ~ 30만 원 선)</li>
+                    <li>**엘리베이터 사용:** 사다리차 사용이 불가능할 경우, 엘리베이터 작업 시 추가 인건비나 운반 시간이 증가하여 <span class="seo-keyword">이사견적</span>이 상승할 수 있습니다.</li>
+                    <li>**특수 작업물:** 에어컨, 벽걸이 TV, 대형 가구 분해/설치 등은 별도의 옵션 비용으로 <span class="seo-keyword">이사견적비교</span> 시 반드시 포함 여부를 확인해야 합니다.</li>
+                </ul>
+            </p>
+
+            <h3>4. 업체 신뢰도 및 보험 가입 여부</h3>
+            <p>
+                저렴한 <span class="seo-keyword">이사견적</span>만을 쫓다보면 무허가 업체를 선택하여 **이사 중 파손** 등의 문제가 발생할 수 있습니다. 정상적인 이사업체는 **적재물 배상 책임보험**에 의무적으로 가입되어 있습니다. <span class="seo-keyword">이사견적비교</span> 시, **반드시 보험 가입 증명서**와 **사업자등록증**을 확인하여 신뢰도를 검증해야 합니다. (이는 <span class="seo-keyword">이사 사기 예방</span>의 핵심입니다.)
+            </p>
+
+            <h3>5. 추가 서비스 및 뒷정리</h3>
+            <p>
+                **포장이사**의 경우, 청소, 소독, 피톤치드 서비스 등이 포함되는 경우가 있습니다. 이러한 **추가 서비스**의 범위에 따라 <span class="seo-keyword">이사비용</span>이 달라집니다. <span class="seo-keyword">이사견적서</span>에 포함된 **정리 정돈의 범위** (예: 옷장 정리, 주방 수납 정리)를 명확히 체크하고 <span class="seo-keyword">견적 비교</span>를 진행해야 합니다.
+            </p>
+        </section>
+
+        <hr>
+
+        <section id="types_price">
+            <h2>🏠 이사 형태별 상세 서비스 및 평균 <span class="seo-keyword">이사비용</span></h2>
+            <p>
+                고객님의 예산과 편리성 추구 정도에 따라 <span class="seo-keyword">포장이사, 반포장이사, 일반이사</span> 중 적합한 형태를 선택하는 것이 중요합니다. 2026년 기준, 5톤 이사(표준 3인 가구)를 기준으로 대략적인 <span class="seo-keyword">이사견적</span>을 비교해 보세요.
+            </p>
+
+            <div class="data-visual">
+                <h4>이사 형태별 <span class="seo-keyword">평균 견적 비교</span> (5톤 이사, 서울 근교 기준)</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>이사 형태</th>
+                            <th>주요 서비스 범위</th>
+                            <th>고객 참여도</th>
+                            <th>평균 <span class="seo-keyword">이사견적</span> (2026년 평일)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**포장이사**</td>
+                            <td>포장, 운반, 정리 정돈, 배치</td>
+                            <td>매우 낮음 (계약 및 지시)</td>
+                            <td><span class="price-highlight">120만원 ~ 180만원</span></td>
+                        </tr>
+                        <tr>
+                            <td>**반포장이사**</td>
+                            <td>출발지 포장, 운반, 도착지 큰 짐 정리/배치</td>
+                            <td>중간 (도착지 잔 짐 정리)</td>
+                            <td><span class="price-highlight">80만원 ~ 130만원</span></td>
+                        </tr>
+                        <tr>
+                            <td>**일반이사**</td>
+                            <td>운반 (고객이 직접 포장 및 정리)</td>
+                            <td>높음 (모든 포장 및 정리)</td>
+                            <td><span class="price-highlight">50만원 ~ 80만원</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 0.9em; color: #777; margin-top: 10px;">*정확한 <span class="seo-keyword">이사견적비교</span>를 위해서는 <a href="#form_section">무료 방문 견적</a>을 받아보시는 것이 필수입니다.</p>
+            </div>
+
+            <h3>포장이사 견적의 특징</h3>
+            <p>
+                **포장이사**는 가장 선호되는 형태로, 고객은 계약만 하면 됩니다. <span class="seo-keyword">포장이사견적</span>에는 포장재, 인건비, 운송비, 정리비용이 모두 포함됩니다. 특히 **이사 전후의 청소 서비스 여부**가 <span class="seo-keyword">이사비용</span>에 큰 영향을 미치므로, 견적서 확인 시 해당 내용을 명확히 체크해야 합니다.
+            </p>
+
+            <h3>반포장이사 견적의 특징</h3>
+            <p>
+                **반포장이사**는 경제성과 편리성을 절충한 형태입니다. 잔 짐을 직접 포장하고 정리하는 수고를 통해 <span class="seo-keyword">포장이사견적</span>보다 약 30% 정도 저렴하게 <span class="seo-keyword">이사비용</span>을 절감할 수 있습니다. <span class="seo-keyword">이사견적비교</span> 시, **업체가 포장하는 범위**와 **고객이 정리해야 할 범위**를 정확히 계약서에 명시해야 추후 분쟁을 막을 수 있습니다.
+            </p>
+        </section>
+
+        <hr>
+
+        <section id="regional">
+            <h2>🗺️ 전국 <span class="seo-keyword">이사견적비교</span>: 지역별 특성 및 주요 키워드 분석</h2>
+            <p>
+                <span class="seo-keyword">이사견적</span>은 지역별 인건비, 물가, 이동 거리에 따라 달라집니다. 특히 인구가 밀집된 수도권 지역과 광역시의 <span class="seo-keyword">이사비용</span>은 변동성이 큽니다. 전국 주요 지역별 <span class="seo-keyword">이사견적</span> 키워드를 분석하여 고객님의 지역에 맞는 정보를 제공합니다.
+            </p>
+
+            <h3>주요 지역별 <span class="seo-keyword">이사견적</span> 고려사항</h3>
+            <p>
+                <ul class="check-list">
+                    <li>**서울 및 수도권:** (<span class="seo-keyword">서울이사견적</span>, <span class="seo-keyword">경기도이사비용</span>, <span class="seo-keyword">인천이사견적</span>) 인구 밀집도가 높아 이사 물량이 많고, 사다리차 작업 환경이 복잡하며, <span class="seo-keyword">손 없는 날</span> 예약이 매우 치열하여 <span class="seo-keyword">이사견적비교</span>가 필수입니다.</li>
+                    <li>**광역시:** (<span class="seo-keyword">부산이사견적</span>, <span class="seo-keyword">대구이사비용</span>, <span class="seo-keyword">대전이사견적</span>, <span class="seo-keyword">광주이사견적</span>, <span class="seo-keyword">울산이사비용</span>) 각 지역의 이사 성수기와 비수기 구분이 명확하며, 지역 내 이사와 타 지역 간 이사의 <span class="seo-keyword">이사비용</span> 차이가 큽니다.</li>
+                    <li>**특정 지방:** (<span class="seo-keyword">세종이사견적</span>, <span class="seo-keyword">제주이사비용</span>, <span class="seo-keyword">강릉이사견적</span> 등) **제주**는 도선료가 추가되어 <span class="seo-keyword">이사견적</span>이 크게 상승하며, **세종**은 신규 아파트 단지가 많아 이사 수요가 꾸준합니다.</li>
+                </ul>
+            </p>
+
+            <h3>전국 주요 지역명 키워드 (SEO 강화를 위한 50개 이상)</h3>
+            <p>
+                <span class="seo-keyword">이사견적비교</span> 검색 시 함께 노출될 수 있도록 **전국 유명 지역명** 및 관련 키워드를 자연스러운 문맥으로 포함합니다:
+                <br><br>
+                <span class="seo-keyword">서울</span> 전역 (<span class="seo-keyword">강남</span>, <span class="seo-keyword">서초</span>, <span class="seo-keyword">송파</span>, <span class="seo-keyword">노원</span>, <span class="seo-keyword">마포</span>, <span class="seo-keyword">영등포</span>), <span class="seo-keyword">인천</span> (<span class="seo-keyword">부평</span>, <span class="seo-keyword">연수</span>, <span class="seo-keyword">청라</span>), <span class="seo-keyword">경기</span> (<span class="seo-keyword">수원이사비용</span>, <span class="seo-keyword">용인</span>, <span class="seo-keyword">성남</span>, <span class="seo-keyword">화성</span>, <span class="seo-keyword">남양주</span>, <span class="seo-keyword">고양</span>, <span class="seo-keyword">파주</span>, <span class="seo-keyword">김포</span>, <span class="seo-keyword">동탄</span>), <span class="seo-keyword">부산</span> (<span class="seo-keyword">해운대</span>, <span class="seo-keyword">서면</span>), <span class="seo-keyword">대구</span> (<span class="seo-keyword">수성구</span>), <span class="seo-keyword">대전</span>, <span class="seo-keyword">광주</span>, <span class="seo-keyword">울산</span>, <span class="seo-keyword">세종</span>, <span class="seo-keyword">강원</span> (<span class="seo-keyword">춘천</span>, <span class="seo-keyword">원주</span>, <span class="seo-keyword">강릉</span>), <span class="seo-keyword">충청</span> (<span class="seo-keyword">청주</span>, <span class="seo-keyword">천안</span>, <span class="seo-keyword">아산</span>), <span class="seo-keyword">전라</span> (<span class="seo-keyword">전주</span>, <span class="seo-keyword">군산</span>, <span class="seo-keyword">여수</span>, <span class="seo-keyword">순천</span>), <span class="seo-keyword">경상</span> (<span class="seo-keyword">포항</span>, <span class="seo-keyword">창원</span>, <span class="seo-keyword">구미</span>, <span class="seo-keyword">김해</span>), 그리고 <span class="seo-keyword">제주도</span>까지 전국 어디든 <span class="seo-keyword">이사견적비교</span>를 제공합니다. 각 지역의 특성과 <span class="seo-keyword">이사비용</span> 시세를 고려하여 가장 적합한 <span class="seo-keyword">포장이사견적</span>을 받아보세요.
+            </p>
+        </section>
+
+        <hr>
+
+        <section id="faq">
+            <h2>❓ 자주 묻는 질문 (FAQ) 및 <span class="seo-keyword">이사견적비교</span> 주의사항</h2>
+            <p>고객님들이 가장 궁금해하시는 <span class="seo-keyword">이사견적</span> 및 서비스 관련 질문들을 모았습니다. <a href="#form_section">견적 요청 전</a> 반드시 확인하여 정확한 이사 준비를 하세요.</p>
+            <dl class="faq-dl">
+                <dt tabindex="0" aria-expanded="false" class="faq-question">이사 견적이 업체마다 차이가 큰 이유는 무엇인가요?</dt>
+                <dd>
+                    <p>이사 <span class="seo-keyword">견적</span>은 표준화된 공정 가격이 아닌, 인건비(투입 인원과 숙련도), 운송료(거리 및 유류비), 그리고 보험료와 추가 서비스(에어컨 설치, 입주 청소 등)의 유무에 따라 크게 달라집니다. 특히 **인건비와 이사 형태(포장/반포장)**가 <span class="seo-keyword">이사비용</span>의 가장 큰 변수입니다. <span class="seo-keyword">이사견적비교</span>를 통해 **최소 3곳 이상의 업체** 견적서를 받아보시고, **서비스 포함 내역**을 꼼꼼히 확인해야 합니다.</p>
+                </dd>
+                <dt tabindex="0" aria-expanded="false" class="faq-question"><span class="seo-keyword">2026년 손 없는 날</span> 이사 견적은 왜 더 비싼가요?</dt>
+                <dd>
+                    <p><span class="seo-keyword">손 없는 날</span>은 이사를 하면 좋다는 전통적인 길일로, 수요가 공급을 훨씬 초과하게 됩니다. 특히 금요일 또는 주말과 겹치는 <span class="seo-keyword">손 없는 날</span>은 이사 시장 전체의 단가가 30% ~ 50%까지 상승하는 것이 일반적입니다. <span class="seo-keyword">이사견적비교</span>를 할 때, 손 없는 날을 피하거나, 적어도 2~3개월 전에 미리 예약해야 그나마 합리적인 <span class="seo-keyword">이사비용</span>을 확보할 수 있습니다.</p>
+                </dd>
+                <dt tabindex="0" aria-expanded="false" class="faq-question">방문 견적을 꼭 받아야 하나요? 온라인/전화 견적만으로는 안 되나요?</dt>
+                <dd>
+                    <p>네, **방문 견적은 필수**입니다. 온라인이나 전화로만 받은 <span class="seo-keyword">이사견적</span>은 현장 상황(정확한 짐량, 특수 짐, 진입로, 엘리베이터 유무, 사다리차 가능 여부)을 반영하지 못하여, 이사 당일 **추가 요금**을 요구받는 경우가 빈번합니다. 정확하고 투명한 <span class="seo-keyword">이사비용</span>을 위해서는 번거롭더라도 <span class="seo-keyword">이사견적비교</span> 업체들의 **무료 방문 견적**을 받는 것을 강력히 추천합니다.</p>
+                </dd>
+                <dt tabindex="0" aria-expanded="false" class="faq-question">파손/분실 시 보상은 어떻게 처리되나요? (보험 관련)</dt>
+                <dd>
+                    <p>법적으로 허가받은 모든 이사업체는 **적재물 배상 책임보험**에 의무적으로 가입해야 합니다. <span class="seo-keyword">이사견적서</span>에 보험 가입 여부 및 보상 한도액이 명확하게 명시되어 있는지 확인하세요. 만약의 사고 발생 시, 현장에서 사진 및 증거를 확보하고, 즉시 업체에 통보하여 보험을 통한 보상 절차를 진행해야 합니다. <span class="seo-keyword">이사견적비교</span> 시 단순히 <span class="seo-keyword">이사비용</span>만 볼 것이 아니라, **보험 가입 여부**가 중요합니다.</p>
+                </dd>
+                <dt tabindex="0" aria-expanded="false" class="faq-question">계약 전, <span class="seo-keyword">이사견적비교</span> 시 어떤 서류를 요구해야 하나요?</dt>
+                <dd>
+                    <p>
+                        성공적인 이사를 위해 다음과 같은 서류 확인을 요구해야 합니다:
+                        <ul class="check-list">
+                            <li>**이사 견적서:** 총 <span class="seo-keyword">이사비용</span>과 상세 서비스 내역, 추가 비용 항목 명시.</li>
+                            <li>**표준 이사화물 운송 계약서:** 구두 계약이 아닌 서면 계약 필수.</li>
+                            <li>**적재물 배상 책임보험 증권 사본:** 피해 발생 시 보상 근거 확인.</li>
+                            <li>**화물자동차 운송 주선사업 허가증:** 정식 허가 업체인지 확인.</li>
+                        </ul>
+                    </dd>
+            </dl>
+        </section>
+
+        <hr>
+
+        <section class="external-links">
+            <h2>🔗 신뢰할 수 있는 이사 관련 유용한 정보 (외부사이트)</h2>
+            <p>보다 안전하고 현명한 이사 결정을 위해, 공인된 외부 기관에서 제공하는 정보를 참고하여 <span class="seo-keyword">이사견적비교</span>를 진행하세요.</p>
+            <ul>
+                <li><a href="https://www.ftc.go.kr/www/cpw/service/selectBusi.do?key=670&busiType=08" target="_blank" rel="nofollow">공정거래위원회 - 이사화물 표준약관 확인 (계약 시 분쟁 예방)</a></li>
+                <li><a href="https://www.consumer.go.kr/kca/cmm/selectPage.do?menuId=448&pageId=602" target="_blank" rel="nofollow">한국소비자원 - 이사 서비스 피해 예방 및 대처 방안</a></li>
+                <li><a href="https://namu.wiki/w/%ED%8F%AC%EC%9E%A5%EC%9D%B4%EC%82%AC" target="_blank" rel="nofollow">나무위키 - 포장이사 관련 상세 정보 및 개념 정리</a></li>
+                <li><a href="https://www.gov.kr/main?a=AA020InfoCapFormPage&bnd=1" target="_blank" rel="nofollow">정부24 - 주소지 변경 서비스 및 행정 절차 안내</a></li>
+                <li><a href="https://www.molit.go.kr/USR/policy/m_248/dtl.jsp?id=666" target="_blank" rel="nofollow">국토교통부 - 화물자동차 운수사업 관련 법규 및 정책</a></li>
+            </ul>
+        </section>
+
+        <hr>
+        <section>
+            <h2>✔️ 현명한 <span class="seo-keyword">이사견적비교</span>의 마무리</h2>
+            <p>
+                이사는 단순한 짐 운반이 아닌, 새로운 시작을 위한 중요한 과정입니다. <span class="seo-keyword">이사비용</span> 절감도 중요하지만, **업체의 신뢰성과 서비스 품질**을 최우선으로 고려하여 <span class="seo-keyword">이사견적비교</span>를 해야 합니다. 저희 플랫폼은 전국 우수 업체들의 견적을 투명하게 비교할 수 있는 기회를 제공하여, 고객님이 이사 준비 과정에서 겪는 불필요한 고민과 스트레스를 최소화해 드립니다. 지금 바로 **무료 견적 요청**을 통해 최적의 <span class="seo-keyword">포장이사견적</span>을 받아보시고, 2026년의 성공적인 이사를 계획하세요.
+            </p>
+            <a href="#form_section" class="cta-button" aria-label="지금 바로 무료 견적 요청하기">🚀 지금 바로 견적 비교 신청하고 이사비용 절약하기</a>
+        </section>
+
     </main>
-  </body>
-</html>
+
+    <footer>
+        <p>전국 <span class="seo-keyword">이사견적비교</span> 센터 | 고객센터: 010-1234-5678 | 이메일: contact@yourdomain.com</p>
+        <p>&copy; 2025 전국 이사견적 비교 센터. 모든 권리 보유.</p>
+        <p style="font-size: 0.85em; color: #999; margin-top: 10px;">본 페이지에 제시된 2026년 <span class="seo-keyword">이사비용</span>은 시장 평균을 기반으로 하며, 실제 <span class="seo-keyword">이사견적</span>은 현장 방문 후 최종 확정됩니다.</p>
+    </footer>
+
+    <script>
+        // FAQ 아코디언 기능 (접기/펼치기)
+        document.querySelectorAll('dl dt').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                const isActive = dt.classList.contains('active');
+                
+                // 모든 항목 닫기
+                document.querySelectorAll('dl dt').forEach(item => {
+                    item.classList.remove('active');
+                    item.setAttribute('aria-expanded', 'false');
+                });
+                
+                // 클릭된 항목만 열기
+                if (!isActive) {
+                    dt.classList.add('active');
+                    dt.setAttribute('aria-expanded', 'true');
+                }
+            });
+            
+            // 키보드 접근성 강화
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+
+        // 폼 제출 시 간단한 유효성 검사 (체류 시간 증대 요소)
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            const dateInput = document.getElementById('move_date');
+            if (new Date(dateInput.value) < new Date('2025-12-05')) {
+                alert('이사 날짜는 오늘 날짜 이후로 선택해 주세요.');
+                e.preventDefault();
+                dateInput.focus();
+            }
+            // 실제 제출은 서버에서 처리됩니다.
+        });
+    </script>
+</body>
+
+  
